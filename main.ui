@@ -69,14 +69,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QTextBrowser" name="textBrowser">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="cursor" stdset="0">
-        <cursorShape>IBeamCursor</cursorShape>
-       </property>
-      </widget>
+      <widget class="QTextEdit" name="textEdit"/>
      </item>
     </layout>
    </widget>
