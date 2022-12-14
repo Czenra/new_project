@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="46d9257f-f3f1-4a91-b4fb-78f320487353" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main_Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main_Window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_about_users.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_about_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data_about_users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings sdk-home="C:\Users\rybka\PycharmProjects\pythonProject\venv\Scripts\python.exe">
+        <option name="mySdkHome" value="C:\Users\rybka\PycharmProjects\pythonProject\venv\Scripts\python.exe" />
+      </console-settings>
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="Main_Window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -64,6 +76,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\rybka\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="46d9257f-f3f1-4a91-b4fb-78f320487353" name="Changes" comment="" />

@@ -1,7 +1,10 @@
 import sys
+#from googletrans import Translator
+import datetime as dt
 import pandas as pd
+import requests, json
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDateEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDateEdit, QLabel
 from PyQt5.QtCore import pyqtSignal
 
 
@@ -14,7 +17,9 @@ class MyWidget(QMainWindow):
         self.value = None
         self.name = None
         self.query = None
+        self.city = None
         self.users = pd.read_csv('data_about_users.csv')
+        self.possible_queries = pd.read_csv('queries.csv')
         self.flag = False
         self.pushButton.clicked.connect(self.run)
 
@@ -67,21 +72,75 @@ class MyWidget(QMainWindow):
             self.flag = True
         self.date.hide()
         self.textEdit.show()
-        self.pushButton.show()
         line = 'Здравствуйте, ' + self.name + '! Чем я могу помочь?'
         self.label.setText(line)
         self.label_2.setText('Введите свой запрос ниже:')
+        self.pushButton.clicked.disconnect()
         self.pushButton.clicked.connect(self.new_query)
 
     def user(self):
         line = 'Здравствуйте, ' + self.name + '! Чем я могу помочь?'
         self.label.setText(line)
         self.label_2.setText('Введите свой запрос ниже:')
+        self.pushButton.clicked.disconnect()
         self.pushButton.clicked.connect(self.new_query)
 
+
     def new_query(self):
+        self.label_2.setText('Введите свой запрос ниже:')
         self.query = self.textEdit.toPlainText()
         self.textEdit.clear()
+        if '?' in self.query:
+            self.query = self.query.replace('?', '')
+        self.query = self.query.lower().replace(' ', '_')
+        if self.query not in self.possible_queries.values:
+            self.msg.setIcon(QMessageBox.Critical)
+            self.msg.setText("Ошибка")
+            self.msg.setInformativeText('Введите запрос как указано в queries.txt')
+            self.msg.setWindowTitle("Ошибка")
+            self.msg.exec_()
+        else:
+            query_id = int(self.possible_queries.loc[self.possible_queries['query'] == self.query, 'id'].iloc[0])
+            if query_id == 0:
+                self.label.hide()
+                self.label_2.setText('Введите название города на английском:')
+                self.pushButton.clicked.disconnect()
+                self.pushButton.clicked.connect(self.weather)
+
+    def weather(self):
+        self.city = self.textEdit.toPlainText()
+        self.textEdit.clear()
+        api_key = "bba742021aa5a4a7cd61a67c872edc98"
+        base_url = "http://api.openweathermap.org/data/2.5/weather?"
+        complete_url = base_url + "appid=" + api_key + "&q=" + self.city
+        response = requests.get(complete_url)
+        x = response.json()
+        if x["cod"] != "404":
+            y = x["main"]
+            current_temperature = 'Температура: ' + str(round(y["temp"] - 273))
+            current_pressure = '\n Давление (в килопаскалях): ' + str(y["pressure"])[:-1]
+            current_humidity = '\n Влажность: ' + str(y["humidity"]) + '%'
+            z = x["weather"]
+            #translator = Translator()
+            #desc = translator.translate(str(z[0]["description"]), src='en', dest='ru')
+            #weather_description = '\n '+ desc.text
+            weather_description = '\n ' + str(z[0]["description"])
+            weather = current_temperature + current_pressure + current_humidity + weather_description
+            self.msg.setIcon(QMessageBox.Information)
+            self.msg.setText("Погода")
+            self.msg.setInformativeText(weather)
+            self.msg.setWindowTitle("Погода")
+            self.msg.exec_()
+            self.label.show()
+            self.pushButton.clicked.disconnect()
+            self.pushButton.clicked.connect(self.new_query)
+        else:
+            self.label_2.setText('Город не найден')
+            self.label.show()
+            self.pushButton.clicked.disconnect()
+            self.pushButton.clicked.connect(self.new_query)
+
+
 
 
 if __name__ == '__main__':
