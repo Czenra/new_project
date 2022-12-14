@@ -1,6 +1,6 @@
 import sys
 #from googletrans import Translator
-import datetime as dt
+import datetime
 import pandas as pd
 import requests, json
 from PyQt5 import uic
@@ -106,6 +106,17 @@ class MyWidget(QMainWindow):
                 self.label_2.setText('Введите название города на английском:')
                 self.pushButton.clicked.disconnect()
                 self.pushButton.clicked.connect(self.weather)
+            if query_id == 1:
+                self.continueSignal.connect(self.today)
+                self.continueSignal.emit()
+            #if query_id == 2:
+            #here will be code
+            #if query_id == 3:
+            #here will be code
+            if query_id == 4:
+                self.continueSignal.connect(self.birthday)
+                self.continueSignal.emit()
+
 
     def weather(self):
         self.city = self.textEdit.toPlainText()
@@ -140,6 +151,34 @@ class MyWidget(QMainWindow):
             self.pushButton.clicked.disconnect()
             self.pushButton.clicked.connect(self.new_query)
 
+    def today(self):
+        current_date = datetime.datetime.now()
+        current_date_string = current_date.strftime('%d/%m/%y %H:%M:%S')
+        self.msg.setIcon(QMessageBox.Information)
+        self.msg.setText("Время")
+        self.msg.setInformativeText(current_date_string)
+        self.msg.setWindowTitle("Время")
+        self.msg.exec_()
+        self.pushButton.clicked.disconnect()
+        self.pushButton.clicked.connect(self.new_query)
+
+    def birthday(self):
+        birth_day = self.users.loc[self.users['name'] == self.name, 'date_of_birth'].iloc[1]
+        dt_birth = datetime.datetime(2023,int(birth_day[3:5]),int(birth_day[0:2]))
+        current_date = datetime.datetime.today()
+        delta = dt_birth - current_date
+        self.msg.setIcon(QMessageBox.Information)
+        self.msg.setText("Время до ДР")
+        self.msg.setInformativeText(delta)
+        self.msg.setWindowTitle("Время до ДР")
+        self.msg.exec_()
+        self.pushButton.clicked.disconnect()
+        self.pushButton.clicked.connect(self.new_query)
+
+    def date_delta(self):
+
+        current_date = datetime.datetime.today()
+        delta = dt_birth - current_date
 
 
 
