@@ -109,13 +109,23 @@ class MyWidget(QMainWindow):
             if query_id == 1:
                 self.continueSignal.connect(self.today)
                 self.continueSignal.emit()
-            #if query_id == 2:
-            #here will be code
-            #if query_id == 3:
-            #here will be code
+            if query_id == 2:
+                pass
+            if query_id == 3:
+                pass
             if query_id == 4:
                 self.continueSignal.connect(self.birthday)
                 self.continueSignal.emit()
+            if query_id == 5:
+                self.label.hide()
+                self.label_2.setText('Введите дату:')
+                self.date_2 = QDateEdit(self)
+                self.date_2.setGeometry(100, 100, 150, 40)
+                self.date_2.move(0, 125)
+                self.date_2.show()
+                self.date_2.editingFinished.connect(self.date_method_2)
+            if query_id == 6:
+                pass
 
 
     def weather(self):
@@ -175,10 +185,26 @@ class MyWidget(QMainWindow):
         self.pushButton.clicked.disconnect()
         self.pushButton.clicked.connect(self.new_query)
 
-    def date_delta(self):
+    def date_method_2(self):
+        self.new_date = self.date_2.date()
+        self.date_2.hide()
+        self.continueSignal.connect(self.date_delta)
+        self.continueSignal.emit()
 
+    def date_delta(self):
+        day = self.new_date.day()
+        month = self.new_date.month()
+        year = self.new_date.year()
+        new_date = datetime.datetime(year, month, day)
         current_date = datetime.datetime.today()
-        delta = dt_birth - current_date
+        delta = new_date - current_date
+        self.msg.setIcon(QMessageBox.Information)
+        self.msg.setText("Время до введённого дня")
+        self.msg.setInformativeText(delta)
+        self.msg.setWindowTitle("Время до введённого дня")
+        self.msg.exec_()
+        self.pushButton.clicked.disconnect()
+        self.pushButton.clicked.connect(self.new_query)
 
 
 
