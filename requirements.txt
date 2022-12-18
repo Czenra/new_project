@@ -3,6 +3,5 @@ datetime
 numpy
 requests
 json
-googletrans
 PyQt5
 pandas

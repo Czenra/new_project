@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46d9257f-f3f1-4a91-b4fb-78f320487353" name="Changes" comment="">
+    <list default="true" id="46d9257f-f3f1-4a91-b4fb-78f320487353" name="Changes" comment="new">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main_Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main_Window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_about_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data_about_users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/queries.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timetables.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +89,29 @@
       <option name="presentableId" value="Default" />
       <updated>1669894380698</updated>
     </task>
+    <task id="LOCAL-00001" summary="new">
+      <created>1671027191095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671027191096</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new" />
+    <option name="LAST_COMMIT_MESSAGE" value="new" />
   </component>
 </project>
